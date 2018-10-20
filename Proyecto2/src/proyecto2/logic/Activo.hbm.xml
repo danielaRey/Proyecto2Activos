@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/10/2018 09:29:19 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="activos" name="proyecto2.logic.Activo" optimistic-lock="version" table="activo">
+    <id name="codigo" type="string">
+      <column length="45" name="codigo"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="proyecto2.logic.Bien" fetch="select" name="bien">
+      <column name="bien"/>
+    </many-to-one>
+    <many-to-one class="proyecto2.logic.Labor" fetch="select" name="labor">
+      <column name="labor"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

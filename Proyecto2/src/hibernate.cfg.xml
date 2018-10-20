@@ -7,14 +7,14 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/activos?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
-    <mapping resource="proyecto2/Bien.hbm.xml"/>
-    <mapping resource="proyecto2/Labor.hbm.xml"/>
-    <mapping resource="proyecto2/Categoria.hbm.xml"/>
-    <mapping resource="proyecto2/Activo.hbm.xml"/>
-    <mapping resource="proyecto2/Puesto.hbm.xml"/>
-    <mapping resource="proyecto2/Usuario.hbm.xml"/>
-    <mapping resource="proyecto2/Dependencia.hbm.xml"/>
-    <mapping resource="proyecto2/Solicitud.hbm.xml"/>
-    <mapping resource="proyecto2/Funcionario.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Bien.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Labor.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Categoria.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Activo.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Puesto.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Usuario.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Dependencia.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Solicitud.hbm.xml"/>
+    <mapping resource="proyecto2/logic/Funcionario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

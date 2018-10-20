@@ -1,5 +1,9 @@
-package proyecto2;
+package proyecto2.logic;
 // Generated 19/10/2018 09:29:17 PM by Hibernate Tools 4.3.1
+
+import proyecto2.logic.Bien;
+import proyecto2.logic.Labor;
+
 
 
 
