@@ -9,6 +9,6 @@ package proyecto2.presentation.application;
  *
  * @author oscar
  */
-public class ApplicationModel {
+public class ApplicationModel extends java.util.Observable{
     
 }
