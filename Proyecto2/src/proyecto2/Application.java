@@ -5,6 +5,10 @@
  */
 package proyecto2;
 
+import proyecto2.logic.Dependencia;
+import proyecto2.logic.Funcionario;
+import proyecto2.logic.Solicitud;
+
 /**
  *
  * @author Dani
@@ -15,7 +19,9 @@ public class Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Funcionario f = new Funcionario("001");
+        Dependencia d = new Dependencia("EIF-201");
+        Solicitud s = new Solicitud();
     }
-    
+
 }
