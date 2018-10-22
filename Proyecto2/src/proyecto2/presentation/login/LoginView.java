@@ -16,6 +16,7 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,21 +28,59 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        label_Usuario = new javax.swing.JLabel();
+        label_Contraseña = new javax.swing.JLabel();
+        text_Usuario = new javax.swing.JTextField();
+        text_Contraseña = new javax.swing.JTextField();
+        label_ImageJava = new javax.swing.JLabel();
+        button_Ingresar = new javax.swing.JButton();
+        button_Salir = new javax.swing.JButton();
+        label_Fondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_Usuario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        label_Usuario.setForeground(new java.awt.Color(255, 255, 255));
+        label_Usuario.setText("Usuario");
+        getContentPane().add(label_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
+
+        label_Contraseña.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        label_Contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        label_Contraseña.setText("Contraseña");
+        getContentPane().add(label_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        getContentPane().add(text_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 230, -1));
+        getContentPane().add(text_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 230, -1));
+
+        label_ImageJava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/prog-java_icon-icons.com_50792.png"))); // NOI18N
+        getContentPane().add(label_ImageJava, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
+
+        button_Ingresar.setBackground(new java.awt.Color(0, 51, 153));
+        button_Ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        button_Ingresar.setText("Ingresar");
+        getContentPane().add(button_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, -1, -1));
+
+        button_Salir.setBackground(new java.awt.Color(0, 51, 153));
+        button_Salir.setForeground(new java.awt.Color(255, 255, 255));
+        button_Salir.setText("Salir");
+        button_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_SalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+
+        label_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/aurora-ultimate-1600x1200.jpg"))); // NOI18N
+        label_Fondo.setText("jLabel1");
+        getContentPane().add(label_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void button_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_button_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +118,13 @@ public class LoginView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_Ingresar;
+    private javax.swing.JButton button_Salir;
+    private javax.swing.JLabel label_Contraseña;
+    private javax.swing.JLabel label_Fondo;
+    private javax.swing.JLabel label_ImageJava;
+    private javax.swing.JLabel label_Usuario;
+    private javax.swing.JTextField text_Contraseña;
+    private javax.swing.JTextField text_Usuario;
     // End of variables declaration//GEN-END:variables
 }

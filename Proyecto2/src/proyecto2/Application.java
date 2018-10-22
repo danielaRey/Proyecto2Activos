@@ -11,6 +11,7 @@ import proyecto2.logic.Categoria;
 import proyecto2.logic.Dependencia;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.Solicitud;
+import proyecto2.presentation.login.LoginView;
 
 /**
  *
@@ -31,5 +32,7 @@ public class Application {
         //hola
         //hola
         //rrr
+        LoginView v = new LoginView();
+        v.setVisible(true);
     }
 }
