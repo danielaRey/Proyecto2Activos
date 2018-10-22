@@ -5,6 +5,9 @@
  */
 package proyecto2;
 
+import java.util.Date;
+import proyecto2.logic.Bien;
+import proyecto2.logic.Categoria;
 import proyecto2.logic.Dependencia;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.Solicitud;
@@ -19,9 +22,10 @@ public class Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Funcionario f = new Funcionario("001");
-        Dependencia d = new Dependencia("EIF-201");
-        Solicitud s = new Solicitud();
+//        Funcionario f = new Funcionario("001");
+//        Categoria c;
+//        Dependencia d = new Dependencia("EIF-201");
+//        Solicitud s = new Solicitud(d,f, new Date(),4,"Compra",20000.0,"recibida","256",null);
+//        s.getBiens().add(new Bien());
     }
-
 }
