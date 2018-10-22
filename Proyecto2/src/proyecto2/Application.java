@@ -34,12 +34,13 @@ public class Application {
         Session ses = HibernateUtil.getSessionFactory().openSession();
       
         Transaction t = ses.beginTransaction();
-          Funcionario f = new Funcionario("005");
-        
+        Funcionario f = new Funcionario("005");
+        Dependencia d= new Dependencia("EIF200");
         // Crea Solicitud y sus Bienes
         ses.save(f);
         t.commit();
     }
+    
     
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;

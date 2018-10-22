@@ -13,13 +13,25 @@ import proyecto2.logic.Dependencia;
  */
 public class DependenciaModel extends java.util.Observable{
     Dependencia current;
-
+    int modo;
+    
     public Dependencia getCurrent() {
         return current;
     }
 
     public void setCurrent(Dependencia current) {
         this.current = current;
+    }
+    public int getModo(){
+        return modo;
+    }
+    
+    public void setModo(int modo) {
+        this.modo = modo;
+    }
+    
+    public void reset(){
+        setCurrent(new Dependencia());
     }
     
     @Override
