@@ -15,9 +15,9 @@ public class FuncionarioModel extends java.util.Observable {
     Funcionario current;
     int modo;    
 
-//    public PersonaModel() {
-//        this.reset();
-//    }
+    public FuncionarioModel() {
+        this.reset();
+    }
 
     public void reset(){      
         setCurrent(new Funcionario());
@@ -32,14 +32,6 @@ public class FuncionarioModel extends java.util.Observable {
 //    public void reset(){
 //        this.reset(Application.MODO_AGREGAR,new Persona());     
 //    }    
-
-    public int getModo() {
-        return modo;
-    }
-
-    public void setModo(int modo) {
-        this.modo = modo;
-    }
 
     public Funcionario getCurrent() {
         return current;
@@ -59,5 +51,13 @@ public class FuncionarioModel extends java.util.Observable {
         setChanged();
         notifyObservers();       
     }    
+    
+     public int getModo() {
+        return modo;
+    }
+
+    public void setModo(int modo) {
+        this.modo = modo;
+    }
     
 }

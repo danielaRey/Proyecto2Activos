@@ -7,6 +7,7 @@ package proyecto2.presentation.funcionarios.edicion;
 
 import java.awt.Point;
 import org.hibernate.Session;
+import proyecto2.Application;
 import proyecto2.logic.Funcionario;
 
 /**
@@ -23,8 +24,8 @@ public class FuncionarioController {
         this.model = model;
         this.session = session;
         
-//        view.setController(this);
-//        view.setModel(model);
+        view.setController(this);
+        view.setModel(model);
     }
     
      public void reset(){
@@ -47,6 +48,22 @@ public class FuncionarioController {
     public void hide(){
         view.setVisible(false);
     }  
+    
+     public void guardar(Funcionario funcionario) throws Exception{  
+//        switch(model.getModo()){
+//            case Application.MODO_AGREGAR:
+//                session.save(funcionario);
+//                domainModel.addPersona(funcionario);
+//                Application.PERSONAS_CONTROLLER.refrescarBusqueda();                   
+//                model.setCurrent(new Funcionario());
+//                model.commit();   
+//                break;
+//            case Application.MODO_EDITAR:
+//                domainModel.updatePersona(funcionario);
+//                Application.PERSONAS_CONTROLLER.refrescarBusqueda();               
+//                break;
+//        }   
+    } 
   
       
 }
