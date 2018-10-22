@@ -28,5 +28,6 @@ public class Application {
 //        Solicitud s = new Solicitud(d,f, new Date(),4,"Compra",20000.0,"recibida","256",null);
 //        s.getBiens().add(new Bien());
 //        ah no pero que golazo
+        //hola
     }
 }
