@@ -15,6 +15,23 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
 
     FuncionarioController Controller;
     FuncionarioModel model;
+
+    public FuncionarioController getController() {
+        return Controller;
+    }
+
+    public void setController(FuncionarioController Controller) {
+        this.Controller = Controller;
+    }
+
+    public FuncionarioModel getModel() {
+        return model;
+    }
+
+    public void setModel(FuncionarioModel model) {
+        this.model = model;
+    }
+    
     public FuncionarioView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
