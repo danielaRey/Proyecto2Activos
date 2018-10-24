@@ -15,6 +15,10 @@ public class DependenciaModel extends java.util.Observable{
     Dependencia current;
     int modo;
     
+    public DependenciaModel(){
+        this.reset();
+    }
+    
     public Dependencia getCurrent() {
         return current;
     }

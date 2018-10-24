@@ -5,7 +5,11 @@
  */
 package proyecto2.presentation.dependencias.edicion;
 
+import java.util.Arrays;
 import java.util.Observable;
+import javax.swing.JOptionPane;
+import proyecto2.Application;
+import proyecto2.logic.Dependencia;
 
 /**
  *
@@ -15,6 +19,11 @@ public class DependenciaView extends javax.swing.JDialog implements java.util.Ob
 
     DependenciaController controller;
     DependenciaModel model;
+
+    public DependenciaView() {
+        super(/*parent, modal*/);
+        initComponents();
+    }
     
     public void setController(proyecto2.presentation.dependencias.edicion.DependenciaController controller){
         this.controller=controller;
@@ -25,19 +34,61 @@ public class DependenciaView extends javax.swing.JDialog implements java.util.Ob
     
     public void setModel(proyecto2.presentation.dependencias.edicion.DependenciaModel model){
         this.model=model;
+        model.addObserver(this);
     }
     public DependenciaModel getModel(){
         return model;
     }
     
-    public DependenciaView(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
+//    public DependenciaView(/*java.awt.Frame parent, boolean modal*/) {
+//        super(/*parent, modal*/);
+//        initComponents();
+//    }
     @Override
     public void update(Observable o, Object o1) {
-       
+        this.limpiarErrores();
+        Dependencia actual=model.getCurrent();
+        this.fromDependencia(actual);
     }
+    public boolean validar(){
+        boolean error=false;
+        Dependencia actual=model.getCurrent();
+        
+        this.codigo.setForeground(Application.COLOR_OK);
+        if(this.codigoTextField.getText().isEmpty()){
+            this.codigo.setForeground(Application.COLOR_ERROR);
+            error=true;
+        }
+        this.nombre.setForeground(Application.COLOR_OK);
+        if (this.nombreTextField.getText().isEmpty()) {
+            this.nombre.setForeground(Application.COLOR_ERROR);
+            error = true;
+        }
+        return !error;
+    }
+    
+    Dependencia toDependencia(){
+        Dependencia d=new Dependencia();
+        d.setCodigo(codigoTextField.getText());
+        d.setNombre(nombreTextField.getText());
+        return d;
+    }
+    public void limpiarErrores() {
+        this.codigo.setForeground(Application.COLOR_OK);
+        this.nombre.setForeground(Application.COLOR_OK);
+    }
+    
+    public void fromDependencia(Dependencia actual){
+        this.codigoTextField.setEnabled(model.getModo()==Application.MODO_AGREGAR);
+        codigoTextField.setText(actual.getCodigo());
+        Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
+        
+        nombreTextField.setEnabled(editable);
+        nombreTextField.setText(actual.getNombre());
+        this.guardarButton.setVisible(editable);
+        this.validate();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,6 +108,11 @@ public class DependenciaView extends javax.swing.JDialog implements java.util.Ob
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         guardarButton.setText("guardar");
+        guardarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarButtonActionPerformed(evt);
+            }
+        });
 
         codigo.setText(" Codigo");
 
@@ -107,47 +163,19 @@ public class DependenciaView extends javax.swing.JDialog implements java.util.Ob
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.validar()){
+            try{
+                this.controller.guardar(this.toDependencia());
+                 JOptionPane.showMessageDialog(this, "Dependencia Agregada", "OK", JOptionPane.INFORMATION_MESSAGE);
+            }catch(Exception e){
+                 JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DependenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DependenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DependenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DependenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        }else
+            JOptionPane.showMessageDialog(this, "Datos invalidos", "ERROR", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_guardarButtonActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DependenciaView dialog = new DependenciaView(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarButton;

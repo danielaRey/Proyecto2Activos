@@ -5,11 +5,17 @@
  */
 package proyecto2.logic;
 
+<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+=======
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+>>>>>>> c06e28e888f36c572c9e4144a72f7d15c30ca89c
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,11 +26,26 @@ import org.hibernate.Transaction;
  */
 public class ModelGeneral {
     Session ses;
+    private static Connection connection;
+
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void setConnection(Connection connection) {
+        ModelGeneral.connection = connection;
+    }
      
     private static ModelGeneral uniqueInstance;
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+    private static final String CONN_STRING = "jdbc:mysql://localhost/activos";
     
     public static ModelGeneral instance(){
         if (uniqueInstance == null){
+            try{
+                connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            }catch(SQLException e){}
             uniqueInstance = new ModelGeneral();
         }
         return uniqueInstance; 
@@ -73,6 +94,7 @@ public class ModelGeneral {
         t.commit();        
     }
     
+<<<<<<< HEAD
     public void agregarBien(Bien bien) {
         Transaction t = ses.beginTransaction();
         ses.persist(bien);
@@ -86,7 +108,11 @@ public class ModelGeneral {
     }
     
     public void close(){
+=======
+    public void close() throws SQLException{
+>>>>>>> c06e28e888f36c572c9e4144a72f7d15c30ca89c
         ses.close();
+        connection.close();
         HibernateUtil.stop();
     }
 }
