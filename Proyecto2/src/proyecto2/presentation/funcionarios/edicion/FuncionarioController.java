@@ -7,6 +7,7 @@ package proyecto2.presentation.funcionarios.edicion;
 
 import java.awt.Point;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import proyecto2.Application;
 import proyecto2.logic.Funcionario;
 
@@ -15,7 +16,6 @@ import proyecto2.logic.Funcionario;
  * @author oscar
  */
 public class FuncionarioController {
-    //Model domainModel;  
     FuncionarioView view;
     FuncionarioModel model;
     Session session; 
@@ -49,20 +49,22 @@ public class FuncionarioController {
         view.setVisible(false);
     }  
     
-     public void guardar(Funcionario funcionario) throws Exception{  
-//        switch(model.getModo()){
-//            case Application.MODO_AGREGAR:
-//                session.save(funcionario);
-//                domainModel.addPersona(funcionario);
-//                Application.PERSONAS_CONTROLLER.refrescarBusqueda();                   
-//                model.setCurrent(new Funcionario());
-//                model.commit();   
-//                break;
-//            case Application.MODO_EDITAR:
-//                domainModel.updatePersona(funcionario);
-//                Application.PERSONAS_CONTROLLER.refrescarBusqueda();               
-//                break;
-//        }   
+     public void guardar(Funcionario funcionario) throws Exception{ 
+           Transaction t = session.beginTransaction();
+        switch(model.getModo()){
+            case Application.MODO_AGREGAR:
+                session.save(funcionario);
+                t.commit();
+                //Application.FUNCIONARIOS_CONTROLLER.refrescarBusqueda();                   
+                model.setCurrent(new Funcionario());
+                model.commit();   
+                break;
+            case Application.MODO_EDITAR:
+                session.update(funcionario);
+                 t.commit();
+                //Application.FUNCIONARIOS_CONTROLLER.refrescarBusqueda();               
+                break;
+        }   
     } 
   
       

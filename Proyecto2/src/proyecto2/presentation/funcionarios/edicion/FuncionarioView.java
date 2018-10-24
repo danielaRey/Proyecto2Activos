@@ -5,7 +5,11 @@
  */
 package proyecto2.presentation.funcionarios.edicion;
 
+import java.util.Arrays;
 import java.util.Observable;
+import javax.swing.JOptionPane;
+import proyecto2.Application;
+import proyecto2.logic.Funcionario;
 
 /**
  *
@@ -13,15 +17,15 @@ import java.util.Observable;
  */
 public class FuncionarioView extends javax.swing.JDialog implements java.util.Observer {
 
-    FuncionarioController Controller;
+    FuncionarioController controller;
     FuncionarioModel model;
 
     public FuncionarioController getController() {
-        return Controller;
+        return controller;
     }
 
     public void setController(FuncionarioController Controller) {
-        this.Controller = Controller;
+        this.controller = Controller;
     }
 
     public FuncionarioModel getModel() {
@@ -30,13 +34,13 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
 
     public void setModel(FuncionarioModel model) {
         this.model = model;
+        //model.addObserver(this); ???
     }
-    
-    public FuncionarioView(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+
+    public FuncionarioView(/*java.awt.Frame parent, boolean modal*/) {
+        super(/*parent, modal*/);
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,16 +53,16 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
 
         ID = new javax.swing.JTextField();
         Nombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        idlabel = new javax.swing.JLabel();
+        nombreLab = new javax.swing.JLabel();
         guardar = new java.awt.Button();
         cancelar = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("ID");
+        idlabel.setText("ID");
 
-        jLabel2.setText("Nombre");
+        nombreLab.setText("Nombre");
 
         guardar.setActionCommand("guardar");
         guardar.setLabel("guardar");
@@ -83,11 +87,11 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(idlabel)
                         .addGap(18, 18, 18)
                         .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(nombreLab)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -104,11 +108,11 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(idlabel))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(nombreLab))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,13 +120,20 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        guardar.getAccessibleContext().setAccessibleName("guardar");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        // TODO add your handling code here:
+        if (this.validar()) {
+            try {
+                this.controller.guardar(this.creaFuncionario());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -135,12 +146,56 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
     private javax.swing.JTextField Nombre;
     private java.awt.Button cancelar;
     private java.awt.Button guardar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel idlabel;
+    private javax.swing.JLabel nombreLab;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //this.limpiarErrores();
+        Funcionario actual = model.getCurrent(); //ver quien es actual??
+        this.fromPersona(actual);
+    }
+
+    public boolean validar() { //Retorna true si no hay errores
+        boolean error = false;
+
+        this.idlabel.setForeground(Application.COLOR_OK);
+        if (this.ID.getText().isEmpty()) {
+            this.idlabel.setForeground(Application.COLOR_ERROR);
+            error = true;
+        }
+        this.nombreLab.setForeground(Application.COLOR_OK);
+        if (this.Nombre.getText().isEmpty()) {
+            this.nombreLab.setForeground(Application.COLOR_ERROR);
+            error = true;
+        }
+        return !error;
+    }
+
+    Funcionario creaFuncionario() {
+        Funcionario func = new Funcionario();
+        func.setId(ID.getText());
+        func.setNombre(Nombre.getText());
+        System.out.println(Nombre.getName());
+        return func;
+    }
+
+    public void limpiarErrores() {
+        this.idlabel.setForeground(Application.COLOR_OK);
+        this.nombreLab.setForeground(Application.COLOR_OK);
+    }
+
+    public void fromPersona(Funcionario actual) {
+        //si el modo agrega, se pone disponible(enabled)
+        this.ID.setEnabled(model.getModo() == Application.MODO_AGREGAR);
+        ID.setText(actual.getId());
+        Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
+
+        Nombre.setEnabled(editable);
+        Nombre.setText(actual.getNombre());
+        
+        this.guardar.setVisible(editable);
+        this.validate();
     }
 }
