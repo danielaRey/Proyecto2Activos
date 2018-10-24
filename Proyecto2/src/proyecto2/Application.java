@@ -6,10 +6,7 @@
 package proyecto2;
 
 import java.awt.Color;
-<<<<<<< HEAD
-=======
 import java.sql.ResultSet;
->>>>>>> 078a2deb96165665b9d858065389d42356e34e9a
 import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,6 +16,9 @@ import proyecto2.logic.Dependencia;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.HibernateUtil;
 import proyecto2.logic.Solicitud;
+import proyecto2.presentation.dependencias.edicion.DependenciaController;
+import proyecto2.presentation.dependencias.edicion.DependenciaModel;
+import proyecto2.presentation.dependencias.edicion.DependenciaView;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioController;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioModel;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioView;
@@ -40,25 +40,28 @@ public class Application {
 //        s.getBiens().add(new Bien());
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-      
-<<<<<<< HEAD
-        Transaction t = ses.beginTransaction();
+
+        Transaction t = session.beginTransaction();
        // Funcionario f = new Funcionario("005");
         //Dependencia d= new Dependencia("EIF201"); ->no se puede duplicar
         // Crea Solicitud y sus Bienes
         //ses.save(d); -> no se hace si no se agrega nada
         t.commit();
-=======
+
 //        Transaction t = ses.beginTransaction();
 //        Funcionario f = new Funcionario("005");
 //        ses.save(f);
 //        t.commit();
        
 //        String filtro="5";
-         String sql="select * from "+
-                    "funcionario"+
-                    "where id like '%%%s%%'";
-          sql=String.format(sql);
+
+        //probando
+        //---------------------------
+         //String sql="select * from "+
+           //         "funcionario"+
+             //       "where id like '%%%s%%'";
+          //sql=String.format(sql);
+          //-------------------------
 //            ResultSet rs =  session;
 //            System.out.println(sql);
 //            while (rs.next()) {
@@ -70,18 +73,23 @@ public class Application {
 //        model.commit();
 //        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
                  
-                 
-        FuncionarioModel funcionarioModel = new FuncionarioModel();
-        FuncionarioView funcionarioView = new FuncionarioView(/*applicationView, true*/);
-        FuncionarioController funcionarioController = new FuncionarioController(funcionarioView, funcionarioModel, session);
-        FUNCIONARIO_CONTROLLER = funcionarioController;
-        funcionarioView.setVisible(true);
+                 //probando
+//        FuncionarioModel funcionarioModel = new FuncionarioModel();
+//        FuncionarioView funcionarioView = new FuncionarioView(/*applicationView, true*/);
+//        FuncionarioController funcionarioController = new FuncionarioController(funcionarioView, funcionarioModel, session);
+//        FUNCIONARIO_CONTROLLER = funcionarioController;
+//        funcionarioView.setVisible(true);
         
+        DependenciaModel dependenciaModel=new DependenciaModel();
+        DependenciaView dependenciaView= new DependenciaView();
+        DependenciaController dependenciaController=new DependenciaController(dependenciaView,dependenciaModel,session);
+        DEPENDENCIA_CONTROLLER=dependenciaController;
+        dependenciaView.setVisible(true);
         
->>>>>>> 078a2deb96165665b9d858065389d42356e34e9a
     }
     
     public static FuncionarioController FUNCIONARIO_CONTROLLER;
+    public static DependenciaController DEPENDENCIA_CONTROLLER;
 //        Transaction t = ses.beginTransaction();
 //        Funcionario f = new Funcionario("005");
 //        Dependencia d= new Dependencia("EIF200");
@@ -91,17 +99,8 @@ public class Application {
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
-<<<<<<< HEAD
-    
+
     public static final Color COLOR_ERROR = Color.red;
     public static final Color COLOR_OK=Color.black; 
 }
-=======
-    public static final Color COLOR_ERROR = Color.red;
-    public static final Color COLOR_OK = Color.black;
-    }
     
-    
-  
-   
->>>>>>> 078a2deb96165665b9d858065389d42356e34e9a
