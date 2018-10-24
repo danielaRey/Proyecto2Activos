@@ -5,6 +5,11 @@
  */
 package proyecto2.logic;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -89,7 +94,43 @@ public class ModelGeneral {
         ses.merge(solicitud);
         t.commit();        
     }
+    public List<Funcionario> searchFuncionarios(Funcionario func){
+        String sql = "select * from funcionario where id like '%%%s%%'";
+
+        sql = String.format(sql, func.getId());
+        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stm.executeQuery(sql);) {
+            List<Funcionario> resultado = new ArrayList<Funcionario>();
+            while (rs.next()) {
+                resultado.add(new Funcionario(rs.getString("id"), rs.getString("nombre")));
+            }
+            return resultado;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     
+    public void eliminaFuncionario(Funcionario f) {
+        String sql = "delete from persona where id='%s'";
+        sql = String.format(sql, f.getId());
+        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stm.executeQuery(sql);) {
+        } catch (SQLException e) {}
+    }
+
+    public void agregarBien(Bien bien) {
+        Transaction t = ses.beginTransaction();
+        ses.persist(bien);
+        t.commit();
+    }
+    
+    public void actualizarBien(Bien bien){
+        Transaction t = ses.beginTransaction();
+        ses.merge(bien);
+        t.commit();        
+    }
+    
+
     public void close() throws SQLException{
         ses.close();
         connection.close();

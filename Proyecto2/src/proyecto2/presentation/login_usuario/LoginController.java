@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto2.presentation.login;
+package proyecto2.presentation.login_usuario;
 
 /**
  *
  * @author Dani
  */
-public class LoginModel {
+public class LoginController {
     
 }
