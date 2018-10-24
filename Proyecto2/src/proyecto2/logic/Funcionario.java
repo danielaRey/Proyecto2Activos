@@ -31,6 +31,10 @@ public class Funcionario  implements java.io.Serializable {
        this.usuarios = usuarios;
        this.solicituds = solicituds;
     }
+     public Funcionario(String id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
    
     public String getId() {
         return this.id;
@@ -66,6 +70,11 @@ public class Funcionario  implements java.io.Serializable {
     
     public void setSolicituds(Set solicituds) {
         this.solicituds = solicituds;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + ", nombre=" + nombre + '}';
     }
 
 
