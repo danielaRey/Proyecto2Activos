@@ -70,10 +70,19 @@ public class Application {
     }
     
     public static FuncionarioController FUNCIONARIO_CONTROLLER;
-    public static final int MODO_AGREGAR = 0; // que hace el final??
+//        Transaction t = ses.beginTransaction();
+//        Funcionario f = new Funcionario("005");
+//        Dependencia d= new Dependencia("EIF200");
+//        // Crea Solicitud y sus Bienes
+//        ses.save(f);
+//        t.commit();
+    public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
     public static final Color COLOR_ERROR = Color.red;
     public static final Color COLOR_OK = Color.black;
+    }
     
-}
+    
+  
+   
