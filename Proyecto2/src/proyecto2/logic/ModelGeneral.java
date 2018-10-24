@@ -5,6 +5,9 @@
  */
 package proyecto2.logic;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,11 +18,26 @@ import org.hibernate.Transaction;
  */
 public class ModelGeneral {
     Session ses;
+    private static Connection connection;
+
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void setConnection(Connection connection) {
+        ModelGeneral.connection = connection;
+    }
      
     private static ModelGeneral uniqueInstance;
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+    private static final String CONN_STRING = "jdbc:mysql://localhost/activos";
     
     public static ModelGeneral instance(){
         if (uniqueInstance == null){
+            try{
+                connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            }catch(SQLException e){}
             uniqueInstance = new ModelGeneral();
         }
         return uniqueInstance; 
@@ -68,8 +86,9 @@ public class ModelGeneral {
         t.commit();        
     }
     
-    public void close(){
+    public void close() throws SQLException{
         ses.close();
+        connection.close();
         HibernateUtil.stop();
     }
 }
