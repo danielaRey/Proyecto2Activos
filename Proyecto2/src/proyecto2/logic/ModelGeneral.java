@@ -5,17 +5,14 @@
  */
 package proyecto2.logic;
 
-<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
->>>>>>> c06e28e888f36c572c9e4144a72f7d15c30ca89c
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -94,7 +91,6 @@ public class ModelGeneral {
         t.commit();        
     }
     
-<<<<<<< HEAD
     public void agregarBien(Bien bien) {
         Transaction t = ses.beginTransaction();
         ses.persist(bien);
@@ -107,10 +103,24 @@ public class ModelGeneral {
         t.commit();        
     }
     
-    public void close(){
-=======
+    public List<Bien> searchBien(Bien filter){
+        String sql = "select * from funcionario where id like '%%%s%%'";
+
+        sql = String.format(sql, filter.getCodigo());
+        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stm.executeQuery(sql);) {
+            List<Bien> resultado = new ArrayList<Bien>();
+            while (rs.next()) {
+                Integer.parseInt(rs.getString("Cantidad"));
+                resultado.add(new Bien(rs.getString("Descripcion"), rs.getString("Marca"), rs.getString("Modelo"),Integer.parseInt(rs.getString("Cantidad")), Double.parseDouble(rs.getString("Precio"))));
+            }
+            return resultado;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+    
     public void close() throws SQLException{
->>>>>>> c06e28e888f36c572c9e4144a72f7d15c30ca89c
         ses.close();
         connection.close();
         HibernateUtil.stop();

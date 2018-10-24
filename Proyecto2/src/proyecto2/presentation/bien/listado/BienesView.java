@@ -26,6 +26,7 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
 
     public void setModel(BienesModel model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     public BienesController getController() {
@@ -51,9 +52,9 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
         text_marca = new javax.swing.JTextField();
         text_modelo = new javax.swing.JTextField();
         text_cantidad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        button_Agrega = new javax.swing.JButton();
+        button_Buscar = new javax.swing.JButton();
+        button_Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -77,16 +78,16 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
 
         text_cantidad.setText("0");
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        button_Agrega.setText("Agregar");
+        button_Agrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                button_AgregaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Buscar");
+        button_Buscar.setText("Buscar");
 
-        jButton3.setText("Salir");
+        button_Salir.setText("Salir");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Busca Bien");
@@ -99,11 +100,11 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
-                        .addComponent(jButton1)
+                        .addComponent(button_Agrega)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton2)
+                        .addComponent(button_Buscar)
                         .addGap(50, 50, 50)
-                        .addComponent(jButton3))
+                        .addComponent(button_Salir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +119,7 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(text_cantidad))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,9 +136,9 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(button_Agrega)
+                    .addComponent(button_Buscar)
+                    .addComponent(button_Salir))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -148,15 +149,15 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
         // TODO add your handling code here:
     }//GEN-LAST:event_text_modeloActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void button_AgregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AgregaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_button_AgregaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton button_Agrega;
+    private javax.swing.JButton button_Buscar;
+    private javax.swing.JButton button_Salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

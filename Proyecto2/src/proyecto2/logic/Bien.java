@@ -41,6 +41,17 @@ public class Bien  implements java.io.Serializable {
        this.precio = precio;
        this.activos = activos;
     }
+    
+    public Bien(String descripcion, String marca, String modelo, Integer cantidad, Double precio/*, Set activos*/) {
+//       this.categoria = categoria;
+//       this.solicitud = solicitud;
+       this.cantidad = cantidad;
+       this.modelo = modelo;
+       this.descripcion = descripcion;
+       this.marca = marca;
+       this.precio = precio;
+      // this.activos = activos;
+    }
    
     public Integer getCodigo() {
         return this.codigo;
