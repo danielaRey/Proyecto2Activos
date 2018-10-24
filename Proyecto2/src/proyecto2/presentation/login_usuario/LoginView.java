@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto2.presentation.login;
+package proyecto2.presentation.login_usuario;
 
 /**
  *
@@ -53,7 +53,7 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(text_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 230, -1));
         getContentPane().add(text_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 230, -1));
 
-        label_ImageJava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/prog-java_icon-icons.com_50792.png"))); // NOI18N
+        label_ImageJava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login_usuario/images/prog-java_icon-icons.com_50792.png"))); // NOI18N
         getContentPane().add(label_ImageJava, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
         button_Ingresar.setBackground(new java.awt.Color(0, 51, 153));
@@ -71,7 +71,15 @@ public class LoginView extends javax.swing.JFrame {
         });
         getContentPane().add(button_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
 
+<<<<<<< HEAD:Proyecto2/src/proyecto2/presentation/login_usuario/LoginView.java
+        label_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login_usuario/images/Fondo_Login.jpg"))); // NOI18N
+=======
         label_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/Fondo_Login.jpg"))); // NOI18N
+<<<<<<< HEAD
+        label_Fondo.setText("jLabel1");
+=======
+>>>>>>> 078a2deb96165665b9d858065389d42356e34e9a
+>>>>>>> c06e28e888f36c572c9e4144a72f7d15c30ca89c:Proyecto2/src/proyecto2/presentation/login/LoginView.java
         getContentPane().add(label_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 480));
 
         pack();
@@ -81,40 +89,7 @@ public class LoginView extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_button_SalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginView().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Ingresar;

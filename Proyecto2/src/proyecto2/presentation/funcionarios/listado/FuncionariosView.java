@@ -139,16 +139,15 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
     }//GEN-LAST:event_buscarActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-              if (evt.getClickCount() == 2) {
-        int row = this.funcionariosTab.getSelectedRow();
-        int col = this.funcionariosTab.getSelectedColumn();
-        if(col==4){
-            controller.searchEstado(row,evt.getLocationOnScreen()); 
-        }
-        else{
-            controller.editar(row,evt.getLocationOnScreen());
-        }
-      }
+//        if (evt.getClickCount() == 2) {
+//            int row = this.funcionariosTab.getSelectedRow();
+//            int col = this.funcionariosTab.getSelectedColumn();
+//            if (col == 4) {
+//                controller.searchEstado(row, evt.getLocationOnScreen());
+//            } else {
+//                controller.editar(row, evt.getLocationOnScreen());
+//            }
+//        }
     }//GEN-LAST:event_formMouseClicked
 
 

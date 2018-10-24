@@ -5,13 +5,15 @@
  */
 package proyecto2.logic;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -112,6 +114,19 @@ public class ModelGeneral {
                 ResultSet rs = stm.executeQuery(sql);) {
         } catch (SQLException e) {}
     }
+
+    public void agregarBien(Bien bien) {
+        Transaction t = ses.beginTransaction();
+        ses.persist(bien);
+        t.commit();
+    }
+    
+    public void actualizarBien(Bien bien){
+        Transaction t = ses.beginTransaction();
+        ses.merge(bien);
+        t.commit();        
+    }
+    
 
     public void close() throws SQLException{
         ses.close();

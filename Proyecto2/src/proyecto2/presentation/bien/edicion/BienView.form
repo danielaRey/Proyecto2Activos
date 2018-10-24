@@ -27,21 +27,26 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Precio" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Cantidad" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Modelo" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Marca" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Descripcion" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextField1" min="-2" pref="259" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextField4" max="32767" attributes="0"/>
-                      <Component id="jTextField5" pref="259" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="button_Guardar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="button_Salir" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="text_Cantidad" max="32767" attributes="0"/>
+                      <Component id="text_Precio" max="32767" attributes="0"/>
+                      <Component id="text_Marca" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
+                      <Component id="text_Modelo" min="-2" pref="259" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jTextField2" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
-                  <Component id="jTextField3" min="-2" pref="259" max="-2" attributes="0"/>
+                  <Component id="text_Descripcion" min="-2" pref="259" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="76" max="32767" attributes="0"/>
           </Group>
@@ -54,75 +59,75 @@
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_Descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Marca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_Marca" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_Cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="button_Guardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="button_Salir" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="label_Descripcion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="label_Marca">
       <Properties>
         <Property name="text" type="java.lang.String" value="Marca"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="label_Modelo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modelo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="label_Cantidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cantidad"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="label_Precio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="text_Marca">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="text_Modelo">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="text_Cantidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="text_Precio">
       <Properties>
         <Property name="text" type="java.lang.String" value="0.0"/>
       </Properties>
@@ -134,6 +139,24 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Bien"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_Guardar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Guardar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_GuardarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_Salir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_SalirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="text_Descripcion">
     </Component>
   </SubComponents>
 </Form>
