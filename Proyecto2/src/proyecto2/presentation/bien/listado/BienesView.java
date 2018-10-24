@@ -6,6 +6,8 @@
 package proyecto2.presentation.bien.listado;
 
 import java.util.Observable;
+import javax.swing.JOptionPane;
+import proyecto2.logic.Bien;
 
 /**
  *
@@ -86,8 +88,18 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
         });
 
         button_Buscar.setText("Buscar");
+        button_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_BuscarActionPerformed(evt);
+            }
+        });
 
         button_Salir.setText("Salir");
+        button_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_SalirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Busca Bien");
@@ -153,6 +165,23 @@ public class BienesView extends javax.swing.JInternalFrame implements java.util.
         // TODO add your handling code here:
     }//GEN-LAST:event_button_AgregaActionPerformed
 
+    private void button_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BuscarActionPerformed
+        try{
+                //this.controller.buscar(this.toBien());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+    }//GEN-LAST:event_button_BuscarActionPerformed
+
+    private void button_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_button_SalirActionPerformed
+
+//    Bien toBien(){
+////        Bien result = new Bien();
+////        result.setCodigo(codigoTextField.getText());
+////        return result;
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Agrega;

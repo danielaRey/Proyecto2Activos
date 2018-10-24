@@ -24,6 +24,9 @@ import proyecto2.logic.Solicitud;
 import proyecto2.presentation.application.ApplicationController;
 import proyecto2.presentation.application.ApplicationModel;
 import proyecto2.presentation.application.ApplicationView;
+import proyecto2.presentation.bien.edicion.BienController;
+import proyecto2.presentation.bien.edicion.BienModel;
+import proyecto2.presentation.bien.edicion.BienView;
 import proyecto2.presentation.dependencias.edicion.DependenciaController;
 import proyecto2.presentation.dependencias.edicion.DependenciaModel;
 import proyecto2.presentation.dependencias.edicion.DependenciaView;
@@ -109,24 +112,33 @@ public class Application {
 //        DependenciaController dependenciaController = new DependenciaController(dependenciaView, dependenciaModel, session);
 //        DEPENDENCIA_CONTROLLER = dependenciaController;
 //        dependenciaView.setVisible(true);
-        ApplicationModel applicationModel = new ApplicationModel();
-        ApplicationView applicationView= new ApplicationView();
-        ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,session);
-        APPLICATION_CONTROLLER = applicationController;
-        
-        DependenciasModel dependenciasModel=new DependenciasModel();
-        DependenciasView dependenciasView=new DependenciasView();
-        applicationView.addInternalFrame(dependenciasView);
-        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
-        DEPENDENCIAS_CONTROLLER=dependenciasController;
-        //dependenciasView.setVisible(true);
-        
-        applicationView.setVisible(true);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        ApplicationModel applicationModel = new ApplicationModel();
+//        ApplicationView applicationView= new ApplicationView();
+//        ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,session);
+//        APPLICATION_CONTROLLER = applicationController;
+//        
+//        DependenciasModel dependenciasModel=new DependenciasModel();
+//        DependenciasView dependenciasView=new DependenciasView();
+//        applicationView.addInternalFrame(dependenciasView);
+//        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
+//        DEPENDENCIAS_CONTROLLER=dependenciasController;
+//        //dependenciasView.setVisible(true);
+//        
+//        applicationView.setVisible(true);
+
+          BienModel bienModel=new BienModel();
+          BienView bienView=new BienView();
+//        applicationView.addInternalFrame(dependenciasView);
+          BienController bienController=new BienController(bienView,bienModel,session);
+          BIEN_CONTROLLER = bienController;
+          bienView.setVisible(true);
     }
 
     public static FuncionarioController FUNCIONARIO_CONTROLLER;
     public static DependenciaController DEPENDENCIA_CONTROLLER;
     public static DependenciasController DEPENDENCIAS_CONTROLLER;
+    public static BienController BIEN_CONTROLLER;
     public static ApplicationController APPLICATION_CONTROLLER; 
 //        Transaction t = ses.beginTransaction();
 //        Funcionario f = new Funcionario("005");
