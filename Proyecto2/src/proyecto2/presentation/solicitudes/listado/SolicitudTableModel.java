@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto2.presentation.dependencias.edicion;
+package proyecto2.presentation.solicitudes.listado;
 
 /**
  *
  * @author oscar
  */
-public class DependenciaController {
+public class SolicitudTableModel {
     
-
 }

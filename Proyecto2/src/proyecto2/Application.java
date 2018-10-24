@@ -5,6 +5,7 @@
  */
 package proyecto2;
 
+import java.awt.Color;
 import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -34,10 +35,10 @@ public class Application {
         Session ses = HibernateUtil.getSessionFactory().openSession();
       
         Transaction t = ses.beginTransaction();
-        Funcionario f = new Funcionario("005");
-        Dependencia d= new Dependencia("EIF200");
+       // Funcionario f = new Funcionario("005");
+        //Dependencia d= new Dependencia("EIF201"); ->no se puede duplicar
         // Crea Solicitud y sus Bienes
-        ses.save(f);
+        //ses.save(d); -> no se hace si no se agrega nada
         t.commit();
     }
     
@@ -45,4 +46,7 @@ public class Application {
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
+    
+    public static final Color COLOR_ERROR = Color.red;
+    public static final Color COLOR_OK=Color.black; 
 }

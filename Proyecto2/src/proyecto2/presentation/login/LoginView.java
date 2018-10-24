@@ -71,7 +71,7 @@ public class LoginView extends javax.swing.JFrame {
         });
         getContentPane().add(button_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
 
-        label_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/aurora-ultimate-1600x1200.jpg"))); // NOI18N
+        label_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/login/images/Fondo_Login.jpg"))); // NOI18N
         label_Fondo.setText("jLabel1");
         getContentPane().add(label_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 480));
 
