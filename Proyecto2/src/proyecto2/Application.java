@@ -120,14 +120,14 @@ public class Application {
         ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,session);
         APPLICATION_CONTROLLER = applicationController;
         
-     
-        
+   
 //        DependenciasModel dependenciasModel=new DependenciasModel();
 //        DependenciasView dependenciasView=new DependenciasView();
 //        applicationView.addInternalFrame(dependenciasView);
 //        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
 //        DEPENDENCIAS_CONTROLLER=dependenciasController;
 //        //dependenciasView.setVisible(true);
+
         
             FuncionariosModel funcionariosModel = new FuncionariosModel();
         FuncionariosView funcionariosView = new FuncionariosView();
@@ -135,12 +135,24 @@ public class Application {
         FuncionariosController funcionariosController = new FuncionariosController(funcionariosView, funcionariosModel, session);
         FUNCIONARIOS_CONTROLLER = funcionariosController;
         applicationView.setVisible(true);
+
+//        
+//        applicationView.setVisible(true);
+
+          BienModel bienModel=new BienModel();
+          BienView bienView=new BienView();
+//        applicationView.addInternalFrame(dependenciasView);
+          BienController bienController=new BienController(bienView,bienModel,session);
+          BIEN_CONTROLLER = bienController;
+          bienView.setVisible(true);
+
     }
 
     public static FuncionarioController FUNCIONARIO_CONTROLLER;
     public static FuncionariosController FUNCIONARIOS_CONTROLLER;
     public static DependenciaController DEPENDENCIA_CONTROLLER;
     public static DependenciasController DEPENDENCIAS_CONTROLLER;
+    public static BienController BIEN_CONTROLLER;
     public static ApplicationController APPLICATION_CONTROLLER; 
 //        Transaction t = ses.beginTransaction();
 //        Funcionario f = new Funcionario("005");

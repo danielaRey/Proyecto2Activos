@@ -106,6 +106,11 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
         jScrollPane1.setViewportView(dependenciasFld);
 
         agregarButton.setText("agregar");
+        agregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarButtonActionPerformed(evt);
+            }
+        });
 
         eliminarButton.setText("eliminar");
 
@@ -163,6 +168,10 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
         //}else
           //  JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE); 
     }//GEN-LAST:event_buscarButtonActionPerformed
+
+    private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@
  */
 package proyecto2.presentation.bien.edicion;
 
+import java.util.Arrays;
 import java.util.Observable;
 import javax.swing.JOptionPane;
 import proyecto2.Application;
@@ -24,6 +25,7 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
 
     public void setModel(BienModel model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     public BienController getController() {
@@ -67,6 +69,7 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
         text_Descripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         label_Descripcion.setText("Descripción");
 
@@ -170,9 +173,6 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
     }//GEN-LAST:event_button_GuardarActionPerformed
 
     private void button_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalirActionPerformed
@@ -218,6 +218,35 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
         bien.setPrecio(Double.parseDouble(text_Precio.getText()));
         return bien;
     }
+    
+    public void limpiarErrores() {
+        this.label_Descripcion.setForeground(Application.COLOR_OK);
+        this.label_Marca.setForeground(Application.COLOR_OK);
+        this.label_Modelo.setForeground(Application.COLOR_OK);
+        this.label_Cantidad.setForeground(Application.COLOR_OK);
+        this.label_Precio.setForeground(Application.COLOR_OK);
+    }
+    
+    public void fromBien(Bien actual){
+        this.text_Descripcion.setEnabled(model.getModo() == Application.MODO_AGREGAR);
+        this.text_Descripcion.setText(actual.getDescripcion());
+        Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
+        
+        this.text_Marca.setEnabled(editable);
+        this.text_Marca.setText(actual.getMarca());
+        
+        this.text_Modelo.setEnabled(editable);
+        this.text_Modelo.setText(actual.getModelo());
+        
+        this.text_Cantidad.setEnabled(editable);
+        this.text_Cantidad.setText(String.valueOf(actual.getCantidad()));
+        
+        this.text_Precio.setEnabled(editable);
+        this.text_Precio.setText(String.valueOf(actual.getPrecio()));
+        
+        this.button_Guardar.setVisible(editable);
+        this.validate();
+    }
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -238,6 +267,8 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.limpiarErrores();
+        Bien actual = model.getCurrent();
+        this.fromBien(actual);
     }
 }
