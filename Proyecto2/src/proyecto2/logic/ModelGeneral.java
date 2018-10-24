@@ -5,6 +5,11 @@
  */
 package proyecto2.logic;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -65,6 +70,18 @@ public class ModelGeneral {
     public void actualizarSolicitud(Solicitud solicitud){
         Transaction t = ses.beginTransaction();
         ses.merge(solicitud);
+        t.commit();        
+    }
+    
+    public void agregarBien(Bien bien) {
+        Transaction t = ses.beginTransaction();
+        ses.persist(bien);
+        t.commit();
+    }
+    
+    public void actualizarBien(Bien bien){
+        Transaction t = ses.beginTransaction();
+        ses.merge(bien);
         t.commit();        
     }
     
