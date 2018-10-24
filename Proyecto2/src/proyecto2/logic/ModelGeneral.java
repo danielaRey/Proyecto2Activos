@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,7 +28,7 @@ import org.hibernate.Transaction;
 public class ModelGeneral {
     Session ses;
     private static Connection connection;
-
+    
     public static Connection getConnection() {
         return connection;
     }
@@ -77,7 +81,7 @@ public class ModelGeneral {
         Hibernate.initialize(s.getBiens());
         ses.evict(s);
         return s;
-    }    
+    }
     
     public void agregarSolicitud(Solicitud solicitud){
         Transaction t = ses.beginTransaction();
@@ -90,7 +94,28 @@ public class ModelGeneral {
         ses.merge(solicitud);
         t.commit();        
     }
-    
+    public List<Funcionario> searchFuncionarios(Funcionario func){
+        String sql = "select * from funcionario where id like '%%%s%%'";
+
+        sql = String.format(sql, func.getId());
+        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stm.executeQuery(sql);) {
+            List<Funcionario> resultado = new ArrayList<Funcionario>();
+            while (rs.next()) {
+                resultado.add(new Funcionario(rs.getString("id"), rs.getString("nombre")));
+            }
+            return resultado;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+    public void eliminaFuncionario(Funcionario f) {
+        String sql = "delete from persona where id='%s'";
+        sql = String.format(sql, f.getId());
+        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stm.executeQuery(sql);) {
+        } catch (SQLException e) {}
+    }
     public void agregarBien(Bien bien) {
         Transaction t = ses.beginTransaction();
         ses.persist(bien);
@@ -102,7 +127,6 @@ public class ModelGeneral {
         ses.merge(bien);
         t.commit();        
     }
-    
     public List<Bien> searchBien(Bien filter){
         String sql = "select * from funcionario where id like '%%%s%%'";
 
@@ -124,5 +148,34 @@ public class ModelGeneral {
         ses.close();
         connection.close();
         HibernateUtil.stop();
+    }
+    
+    public List<Dependencia> searchDependencias(Dependencia filtro){
+        //probando
+//        List<Dependencia> resultado=new ArrayList<Dependencia>();
+//       // List<Dependencia> resultado=new ArrayList<Dependencia>();
+//        try(Statement stm =  proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+//                ResultSet rs = stm.executeQuery("select * from dependencia where codigo like '%0%'");)                
+//        {
+//            while(rs.next()){
+//                resultado.add(new Dependencia(rs.getString("codigo"),rs.getString("nombre")));
+//            }
+//        }catch (SQLException e) {}
+//        return resultado;
+
+        
+        String sql="select * from dependencia where codigo like '%%%s%%'";
+        
+        sql=String.format(sql, filtro.getCodigo());
+        try(Statement stm= proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs=stm.executeQuery(sql);){
+            List<Dependencia> resultado=new ArrayList<Dependencia>();
+            while(rs.next()){
+                resultado.add(new Dependencia(rs.getString("codigo"),rs.getString("nombre")));
+            }
+            return resultado;
+        }catch(SQLException e){
+            return null;
+        }
     }
 }
