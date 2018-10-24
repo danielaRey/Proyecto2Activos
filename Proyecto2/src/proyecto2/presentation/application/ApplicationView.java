@@ -6,6 +6,7 @@
 package proyecto2.presentation.application;
 
 import java.util.Observable;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     
     public void setModel(ApplicationModel model){
         this.model=model;
-       // model.addObserver(this);
+        model.addObserver(this);
     }
 
     public ApplicationModel getModel() {
@@ -37,9 +38,18 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         this.setSize(this.getMaximumSize());
     }
     @Override
-    public void update(Observable o, Object o1) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(java.util.Observable updatedModel,Object parametros) {
+        if (model.getCurrent()!=null){
+           this.setTitle("DEPENDENCIAS ("+model.getCurrent().getIdUsuario()+")");
+       }
+       else{
+           this.setTitle("PERSONAS");
+       }     
     }
+    
+    public void addInternalFrame(JInternalFrame f){
+       this.desktopPane.add(f);
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,21 +59,59 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        desktopPane = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        DEPENDENCIAS = new javax.swing.JMenu();
+        dependenciasListadoMenuItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 284, Short.MAX_VALUE)
+        );
+
+        DEPENDENCIAS.setText("Dependencias");
+
+        dependenciasListadoMenuItem.setText("Listado");
+        dependenciasListadoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dependenciasListadoMenuItemActionPerformed(evt);
+            }
+        });
+        DEPENDENCIAS.add(dependenciasListadoMenuItem);
+
+        jMenuBar1.add(DEPENDENCIAS);
+
+        jMenu2.setText("Exit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(desktopPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(desktopPane)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dependenciasListadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciasListadoMenuItemActionPerformed
+        controller.dependenciasShow();
+    }//GEN-LAST:event_dependenciasListadoMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,5 +151,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu DEPENDENCIAS;
+    private javax.swing.JMenuItem dependenciasListadoMenuItem;
+    private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

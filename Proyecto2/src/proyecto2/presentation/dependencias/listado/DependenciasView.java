@@ -6,6 +6,7 @@
 package proyecto2.presentation.dependencias.listado;
 
 import java.util.Observable;
+import javax.swing.JOptionPane;
 import proyecto2.Application;
 import proyecto2.logic.Dependencia;
 
@@ -32,7 +33,7 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
 
     public void setModel(DependenciasModel model) {
         this.model = model;
-        //model.addObserver(this);
+        model.addObserver(this);
     }
     
     public DependenciasView() {
@@ -60,7 +61,7 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
    
     Dependencia toDependencia(){
         Dependencia result = new Dependencia();
-        result.setNombre(codigoTextField.getText());
+        result.setCodigo(codigoTextField.getText());
         return result;
     }
     
@@ -83,6 +84,11 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
         eliminarButton = new javax.swing.JButton();
 
         buscarButton.setText("buscar");
+        buscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarButtonActionPerformed(evt);
+            }
+        });
 
         codigo.setText("Codigo");
 
@@ -145,6 +151,18 @@ public class DependenciasView extends javax.swing.JInternalFrame implements java
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
+        // TODO add your handling code here:
+       // if(this.validar()){
+            try{
+                controller.buscar(this.toDependencia());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        //}else
+          //  JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE); 
+    }//GEN-LAST:event_buscarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

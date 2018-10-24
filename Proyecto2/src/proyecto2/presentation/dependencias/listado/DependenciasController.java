@@ -30,15 +30,16 @@ public class DependenciasController {
     }
     
     public void buscar(Dependencia filter) throws Exception{       
-         model.setFilter(filter);
+        model.setFilter(filter);
         this.refrescarBusqueda();
     }
     public void refrescarBusqueda() throws Exception{
-        //List<Dependencia> rows = domainModel.searchPersonas(model.getFilter());
-//        model.setDependencias(rows);
-//        model.commit();
-//        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
-    }    
+       
+        List<Dependencia> rows=proyecto2.logic.ModelGeneral.instance().searchDependencias(model.getFilter());
+        model.setDependencias(rows);
+        model.commit();
+        if(rows.isEmpty()) throw new Exception("Ningun dato coincide");
+    }
 
     public void borrar(int row){  
         Dependencia seleccionada = model.getDependencias().getRowAt(row); 
