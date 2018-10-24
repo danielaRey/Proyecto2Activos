@@ -56,7 +56,7 @@ public class FuncionarioTableModel  extends AbstractTableModel {
     public static final int ID=0;
     public static final int NOMBRE=1;
     
-    String[] colNames = new String[2];//checar utilidad de colNames
+    String[] colNames = new String[2];
     private void initColNames(){
         colNames[ID]= "Id";
         colNames[NOMBRE]= "Nombre";

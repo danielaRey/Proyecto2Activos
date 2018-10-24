@@ -38,6 +38,9 @@ public class FuncionariosController {
        List<Funcionario> rows = proyecto2.logic.ModelGeneral.instance().searchFuncionarios(model.getFilter());
         model.setFuncionarios(rows);
         model.commit();
+         for (int i = 0; i < rows.size(); i++) {
+                System.out.println(rows.get(i).toString());
+            }
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }    
 

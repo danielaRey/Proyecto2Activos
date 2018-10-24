@@ -20,6 +20,7 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
     FuncionariosController controller;
     FuncionariosModel model;
     public FuncionariosView() {
+         super("",false,true);
         initComponents();
     }
 
@@ -37,6 +38,7 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
 
     public void setModel(FuncionariosModel model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     /**
@@ -139,15 +141,11 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
     }//GEN-LAST:event_buscarActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-//        if (evt.getClickCount() == 2) {
-//            int row = this.funcionariosTab.getSelectedRow();
-//            int col = this.funcionariosTab.getSelectedColumn();
-//            if (col == 4) {
-//                controller.searchEstado(row, evt.getLocationOnScreen());
-//            } else {
-//                controller.editar(row, evt.getLocationOnScreen());
-//            }
-//        }
+        if (evt.getClickCount() == 2) {
+            int row = this.funcionariosTab.getSelectedRow();
+            int col = this.funcionariosTab.getSelectedColumn();
+            controller.editar(row, evt.getLocationOnScreen());
+        }
     }//GEN-LAST:event_formMouseClicked
 
 
@@ -167,7 +165,6 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
         Funcionario filtro = model.getFilter();
         this.fromFuncionario(filtro);
         this.funcionariosTab.setModel(model.getFuncionarios());
-        //this.funcionariosTab.setModel(model.getFuncionarios()); //ver que hace getFuncionarios?
     }
     
       boolean validar(){
@@ -182,12 +179,12 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
     }
 
     public void fromFuncionario(Funcionario filtro) {
-        this.idTxtField.setText(filtro.getNombre());
+        this.idTxtField.setText(filtro.getId());
     }
 
     Funcionario toFuncionario() {
         Funcionario result = new Funcionario();
-        result.setNombre(idTxtField.getText());
+        result.setId(idTxtField.getText());
         return result;
     }
     

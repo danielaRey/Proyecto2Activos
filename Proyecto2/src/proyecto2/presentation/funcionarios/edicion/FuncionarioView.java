@@ -34,7 +34,7 @@ public class FuncionarioView extends javax.swing.JDialog implements java.util.Ob
 
     public void setModel(FuncionarioModel model) {
         this.model = model;
-        //model.addObserver(this); ???
+        model.addObserver(this); 
     }
 
     public FuncionarioView(/*java.awt.Frame parent, boolean modal*/) {

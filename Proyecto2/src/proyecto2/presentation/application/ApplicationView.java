@@ -64,6 +64,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         DEPENDENCIAS = new javax.swing.JMenu();
         dependenciasListadoMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        Funcionarios = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +95,18 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         jMenu2.setText("Exit");
         jMenuBar1.add(jMenu2);
 
+        Funcionarios.setText("Funcionarios");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        Funcionarios.add(jMenuItem1);
+
+        jMenuBar1.add(Funcionarios);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -112,6 +126,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private void dependenciasListadoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciasListadoMenuItemActionPerformed
         controller.dependenciasShow();
     }//GEN-LAST:event_dependenciasListadoMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       controller.funcionariosShow();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,9 +170,11 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu DEPENDENCIAS;
+    private javax.swing.JMenu Funcionarios;
     private javax.swing.JMenuItem dependenciasListadoMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

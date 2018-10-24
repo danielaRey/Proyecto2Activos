@@ -24,6 +24,9 @@ import proyecto2.logic.Solicitud;
 import proyecto2.presentation.application.ApplicationController;
 import proyecto2.presentation.application.ApplicationModel;
 import proyecto2.presentation.application.ApplicationView;
+import proyecto2.presentation.bien.edicion.BienController;
+import proyecto2.presentation.bien.edicion.BienModel;
+import proyecto2.presentation.bien.edicion.BienView;
 import proyecto2.presentation.dependencias.edicion.DependenciaController;
 import proyecto2.presentation.dependencias.edicion.DependenciaModel;
 import proyecto2.presentation.dependencias.edicion.DependenciaView;
@@ -33,6 +36,9 @@ import proyecto2.presentation.dependencias.listado.DependenciasView;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioController;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioModel;
 import proyecto2.presentation.funcionarios.edicion.FuncionarioView;
+import proyecto2.presentation.funcionarios.listado.FuncionariosController;
+import proyecto2.presentation.funcionarios.listado.FuncionariosModel;
+import proyecto2.presentation.funcionarios.listado.FuncionariosView;
 
 /**
  *
@@ -114,17 +120,25 @@ public class Application {
         ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,session);
         APPLICATION_CONTROLLER = applicationController;
         
-        DependenciasModel dependenciasModel=new DependenciasModel();
-        DependenciasView dependenciasView=new DependenciasView();
-        applicationView.addInternalFrame(dependenciasView);
-        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
-        DEPENDENCIAS_CONTROLLER=dependenciasController;
-        //dependenciasView.setVisible(true);
+     
         
+//        DependenciasModel dependenciasModel=new DependenciasModel();
+//        DependenciasView dependenciasView=new DependenciasView();
+//        applicationView.addInternalFrame(dependenciasView);
+//        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
+//        DEPENDENCIAS_CONTROLLER=dependenciasController;
+//        //dependenciasView.setVisible(true);
+        
+            FuncionariosModel funcionariosModel = new FuncionariosModel();
+        FuncionariosView funcionariosView = new FuncionariosView();
+        applicationView.addInternalFrame(funcionariosView);
+        FuncionariosController funcionariosController = new FuncionariosController(funcionariosView, funcionariosModel, session);
+        FUNCIONARIOS_CONTROLLER = funcionariosController;
         applicationView.setVisible(true);
     }
 
     public static FuncionarioController FUNCIONARIO_CONTROLLER;
+    public static FuncionariosController FUNCIONARIOS_CONTROLLER;
     public static DependenciaController DEPENDENCIA_CONTROLLER;
     public static DependenciasController DEPENDENCIAS_CONTROLLER;
     public static ApplicationController APPLICATION_CONTROLLER; 

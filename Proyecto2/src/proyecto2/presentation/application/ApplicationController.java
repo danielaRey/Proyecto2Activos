@@ -30,6 +30,9 @@ public class ApplicationController {
     public void dependenciasShow(){
         Application.DEPENDENCIAS_CONTROLLER.show();
     }
+    public void funcionariosShow(){
+        Application.FUNCIONARIOS_CONTROLLER.show();
+    }
     public void enter(){
         this.reset();
         this.show();
