@@ -6,13 +6,14 @@
 package proyecto2.presentation.funcionarios.listado;
 
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 import proyecto2.logic.Funcionario;
 
 /**
  *
  * @author Dani
  */
-public class FuncionarioTableModel {
+public class FuncionarioTableModel  extends AbstractTableModel {
     List<Funcionario> rows;
     int[] cols;
 

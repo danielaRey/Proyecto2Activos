@@ -29,6 +29,12 @@ public class Dependencia  implements java.io.Serializable {
        this.solicituds = solicituds;
        this.labors = labors;
     }
+
+    public Dependencia(String codigo, String nombre) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.codigo=codigo;
+        this.nombre=nombre;
+    }
    
     public String getCodigo() {
         return this.codigo;

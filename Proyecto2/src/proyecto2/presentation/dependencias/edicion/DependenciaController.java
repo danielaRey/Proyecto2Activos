@@ -29,7 +29,7 @@ public class DependenciaController {
         view.setModel(model);
     }
     
-     public void reset(){
+    public void reset(){
         model.reset();
     }
     
