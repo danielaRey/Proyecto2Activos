@@ -5,11 +5,17 @@
  */
 package proyecto2.presentation.funcionarios.listado;
 
+import java.util.Observable;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import proyecto2.Application;
+import proyecto2.logic.Funcionario;
+
 /**
  *
  * @author Dani
  */
-public class FuncionariosView extends javax.swing.JInternalFrame {
+public class FuncionariosView extends javax.swing.JInternalFrame implements java.util.Observer {
 
     FuncionariosController controller;
     FuncionariosModel model;
@@ -42,21 +48,151 @@ public class FuncionariosView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        funcionariosTab = new javax.swing.JTable();
+        IDlabl = new javax.swing.JLabel();
+        idTxtField = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
+        agregar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
+        funcionariosTab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(funcionariosTab);
+
+        IDlabl.setText("ID");
+
+        buscar.setText("buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        agregar.setText("agregar");
+
+        eliminar.setText("eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(IDlabl)
+                        .addGap(18, 18, 18)
+                        .addComponent(idTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscar))
+                    .addComponent(agregar))
+                .addContainerGap(174, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(eliminar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IDlabl)
+                    .addComponent(idTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(agregar)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminar))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        try {
+                controller.buscar(this.toFuncionario());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+              if (evt.getClickCount() == 2) {
+        int row = this.funcionariosTab.getSelectedRow();
+        int col = this.funcionariosTab.getSelectedColumn();
+        if(col==4){
+            controller.searchEstado(row,evt.getLocationOnScreen()); 
+        }
+        else{
+            controller.editar(row,evt.getLocationOnScreen());
+        }
+      }
+    }//GEN-LAST:event_formMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDlabl;
+    private javax.swing.JButton agregar;
+    private javax.swing.JButton buscar;
+    private javax.swing.JButton eliminar;
+    private javax.swing.JTable funcionariosTab;
+    private javax.swing.JTextField idTxtField;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.limpiarErrores();
+        Funcionario filtro = model.getFilter();
+        this.fromFuncionario(filtro);
+        this.funcionariosTab.setModel(model.getFuncionarios());
+        //this.funcionariosTab.setModel(model.getFuncionarios()); //ver que hace getFuncionarios?
+    }
+    
+      boolean validar(){
+        boolean error=false;
+       
+        this.IDlabl.setForeground(Application.COLOR_OK);
+        if (this.IDlabl.getText().isEmpty()) {//***********cambiar
+            this.IDlabl.setForeground(Application.COLOR_ERROR);
+            error = true;
+        }
+        return !error;
+    }
+
+    public void fromFuncionario(Funcionario filtro) {
+        this.idTxtField.setText(filtro.getNombre());
+    }
+
+    Funcionario toFuncionario() {
+        Funcionario result = new Funcionario();
+        result.setNombre(idTxtField.getText());
+        return result;
+    }
+    
+      public void limpiarErrores(){
+       this.IDlabl.setForeground(Application.COLOR_OK); 
+   }
 }

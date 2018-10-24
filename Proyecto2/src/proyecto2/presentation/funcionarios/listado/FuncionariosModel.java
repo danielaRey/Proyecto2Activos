@@ -16,9 +16,9 @@ import proyecto2.logic.Funcionario;
  */
 public class FuncionariosModel extends java.util.Observable{
 
-    Funcionario filter; 
+    Funcionario filter;
     FuncionarioTableModel funcionarios;
-    Funcionario seleccionado;
+    Funcionario seleccionada;
 
     public FuncionariosModel() {
         this.reset();
@@ -26,45 +26,45 @@ public class FuncionariosModel extends java.util.Observable{
 
     public void reset(){ 
         filter = new Funcionario();
-        List<Funcionario> rows = new ArrayList<>();        
-        seleccionado=null;  
+        List<Funcionario> rows = new ArrayList<>();
+        seleccionada=null;
         this.setFuncionarios(rows);
-        this.commit();  
+        this.commit();
     }
-    
-    public void setFuncionarios(List<Funcionario> personas){
-        int[] cols={FuncionarioTableModel.ID,FuncionarioTableModel.NOMBRE};
-        this.funcionarios =new FuncionarioTableModel(cols,personas);    
-    }
-    
+
     public Funcionario getFilter() {
         return filter;
     }
-    
+
     public void setFilter(Funcionario filter) {
         this.filter = filter;
     }
-    
-     public FuncionarioTableModel getFuncionarios() {
+
+    public FuncionarioTableModel getFuncionarios() {
         return funcionarios;
     }
 
-    public Funcionario getSeleccionado() {
-        return seleccionado;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        int[] cols={FuncionarioTableModel.ID,FuncionarioTableModel.NOMBRE};
+        this.funcionarios= new FuncionarioTableModel(cols,funcionarios);
     }
 
-    public void setSeleccionado(Funcionario seleccionado) {
-        this.seleccionado = seleccionado;
+    public Funcionario getSeleccionada() {
+        return seleccionada;
     }
-  
+
+    public void setSeleccionada(Funcionario seleccionada) {
+        this.seleccionada = seleccionada;
+    }
+
     @Override
     public void addObserver(Observer o) {
         super.addObserver(o);
-        this.commit();   
+        this.commit();
     }
 
     public void commit(){
         setChanged();
-        notifyObservers();       
+        notifyObservers();
     }
 }
