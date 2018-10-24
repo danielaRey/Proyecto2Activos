@@ -33,7 +33,7 @@ public class FuncionarioController {
     }
     
     public void reset(int modo, Funcionario current){
-//        model.reset(modo, current);
+        model.reset(modo, current);
     }    
     
     public void show(){
@@ -53,12 +53,12 @@ public class FuncionarioController {
            Transaction t = session.beginTransaction();
         switch(model.getModo()){
             case Application.MODO_AGREGAR:
-                proyecto2.logic.ModelGeneral.instance();
-//                session.save(funcionario);
-//                t.commit();
-//                //Application.FUNCIONARIOS_CONTROLLER.refrescarBusqueda();                   
-//                model.setCurrent(new Funcionario());
-//                model.commit();   
+//                proyecto2.logic.ModelGeneral.instance();
+                session.save(funcionario);
+                t.commit();
+                //Application.FUNCIONARIOS_CONTROLLER.refrescarBusqueda();                   
+                model.setCurrent(new Funcionario());
+                model.commit();   
                 break;
             case Application.MODO_EDITAR:
                 session.update(funcionario);

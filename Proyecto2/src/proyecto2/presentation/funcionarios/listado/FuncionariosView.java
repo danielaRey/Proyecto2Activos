@@ -87,6 +87,11 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
         });
 
         agregar.setText("agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
 
         eliminar.setText("eliminar");
 
@@ -147,6 +152,14 @@ public class FuncionariosView extends javax.swing.JInternalFrame implements java
             controller.editar(row, evt.getLocationOnScreen());
         }
     }//GEN-LAST:event_formMouseClicked
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+          try {
+            controller.preAgregar(this.agregar.getLocationOnScreen());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+        }
+    }//GEN-LAST:event_agregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

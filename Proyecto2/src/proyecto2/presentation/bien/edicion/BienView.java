@@ -25,7 +25,7 @@ public class BienView extends javax.swing.JDialog implements java.util.Observer 
 
     public void setModel(BienModel model) {
         this.model = model;
-        model.addObserver(this);
+//        model.addObserver(this);
     }
 
     public BienController getController() {

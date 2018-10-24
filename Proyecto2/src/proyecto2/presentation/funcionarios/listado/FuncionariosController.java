@@ -44,7 +44,7 @@ public class FuncionariosController {
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }    
 
-    public void agregar(Point at)throws Exception{      
+    public void preAgregar(Point at)throws Exception{      
 //        Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
 //        if ( !Arrays.asList(Application.ROL_MANAGER).contains(principal.getRol())){
 //           throw new Exception(Application.ROL_NOTAUTHORIZED);

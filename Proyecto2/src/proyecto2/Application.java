@@ -60,7 +60,7 @@ public class Application {
         //ses.save(d); -> no se hace si no se agrega nada
         // t.commit();
 //        Transaction t = ses.beginTransaction();
-        Transaction t = session.beginTransaction();
+//        Transaction t = session.beginTransaction();
         ModelGeneral model = proyecto2.logic.ModelGeneral.instance();
 //        try (Statement stm = proyecto2.logic.ModelGeneral.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 //                ResultSet rs = stm.executeQuery("select * from funcionario where id like '%0%'");) {
@@ -104,11 +104,7 @@ public class Application {
 //        funcionarioView.setVisible(true);
 //                 
           //probando
-//        FuncionarioModel funcionarioModel = new FuncionarioModel();
-//        FuncionarioView funcionarioView = new FuncionarioView(/*applicationView, true*/);
-//        FuncionarioController funcionarioController = new FuncionarioController(funcionarioView, funcionarioModel, session);
-//        FUNCIONARIO_CONTROLLER = funcionarioController;
-//        funcionarioView.setVisible(true);
+
 //
 //        DependenciaModel dependenciaModel = new DependenciaModel();
 //        DependenciaView dependenciaView = new DependenciaView();
@@ -119,17 +115,20 @@ public class Application {
         ApplicationView applicationView= new ApplicationView();
         ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,session);
         APPLICATION_CONTROLLER = applicationController;
-        
-   
+//        
+        FuncionarioModel funcionarioModel = new FuncionarioModel();
+        FuncionarioView funcionarioView = new FuncionarioView(applicationView, true);
+        FuncionarioController funcionarioController = new FuncionarioController(funcionarioView, funcionarioModel, session);
+        FUNCIONARIO_CONTROLLER = funcionarioController;
 //        DependenciasModel dependenciasModel=new DependenciasModel();
 //        DependenciasView dependenciasView=new DependenciasView();
 //        applicationView.addInternalFrame(dependenciasView);
 //        DependenciasController dependenciasController=new DependenciasController(dependenciasView,dependenciasModel,session);
 //        DEPENDENCIAS_CONTROLLER=dependenciasController;
-//        //dependenciasView.setVisible(true);
+        //dependenciasView.setVisible(true);
 
         
-            FuncionariosModel funcionariosModel = new FuncionariosModel();
+        FuncionariosModel funcionariosModel = new FuncionariosModel();
         FuncionariosView funcionariosView = new FuncionariosView();
         applicationView.addInternalFrame(funcionariosView);
         FuncionariosController funcionariosController = new FuncionariosController(funcionariosView, funcionariosModel, session);
@@ -139,12 +138,12 @@ public class Application {
 //        
 //        applicationView.setVisible(true);
 
-          BienModel bienModel=new BienModel();
-          BienView bienView=new BienView();
+//          BienModel bienModel=new BienModel();
+//          BienView bienView=new BienView();
 //        applicationView.addInternalFrame(dependenciasView);
-          BienController bienController=new BienController(bienView,bienModel,session);
-          BIEN_CONTROLLER = bienController;
-          bienView.setVisible(true);
+//          BienController bienController=new BienController(bienView,bienModel,session);
+//          BIEN_CONTROLLER = bienController;
+//          bienView.setVisible(true);
 
     }
 

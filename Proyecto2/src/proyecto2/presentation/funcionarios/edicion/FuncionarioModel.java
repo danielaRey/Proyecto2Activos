@@ -23,11 +23,11 @@ public class FuncionarioModel extends java.util.Observable {
         setCurrent(new Funcionario());
     }
     
-//    public void reset(int modo, Persona current){
-//        this.setModo(modo);
-//        this.setCurrent(current);
-//        this.commit();
-//    }
+    public void reset(int modo, Funcionario current){
+        this.setModo(modo);
+        this.setCurrent(current);
+        this.commit();
+    }
     
 //    public void reset(){
 //        this.reset(Application.MODO_AGREGAR,new Persona());     
