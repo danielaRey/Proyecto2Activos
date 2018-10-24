@@ -5,6 +5,8 @@
  */
 package proyecto2;
 
+import java.awt.Color;
+import java.sql.ResultSet;
 import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,6 +16,9 @@ import proyecto2.logic.Dependencia;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.HibernateUtil;
 import proyecto2.logic.Solicitud;
+import proyecto2.presentation.funcionarios.edicion.FuncionarioController;
+import proyecto2.presentation.funcionarios.edicion.FuncionarioModel;
+import proyecto2.presentation.funcionarios.edicion.FuncionarioView;
 
 /**
  *
@@ -31,17 +36,44 @@ public class Application {
 //        Solicitud s = new Solicitud(d,f, new Date(),4,"Compra",20000.0,"recibida","256",null);
 //        s.getBiens().add(new Bien());
 
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
       
-        Transaction t = ses.beginTransaction();
-          Funcionario f = new Funcionario("005");
+//        Transaction t = ses.beginTransaction();
+//        Funcionario f = new Funcionario("005");
+//        ses.save(f);
+//        t.commit();
+       
+//        String filtro="5";
+         String sql="select * from "+
+                    "funcionario"+
+                    "where id like '%%%s%%'";
+          sql=String.format(sql);
+//            ResultSet rs =  session;
+//            System.out.println(sql);
+//            while (rs.next()) {
+//                resultado.add(persona(rs));
+//            }
+//        } catch (SQLException ex) { }
+//        List<Funcionario> rows = domainModel.searchPersonas(model.getFilter());
+//        model.setPersonas(rows);
+//        model.commit();
+//        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
+                 
+                 
+        FuncionarioModel funcionarioModel = new FuncionarioModel();
+        FuncionarioView funcionarioView = new FuncionarioView(/*applicationView, true*/);
+        FuncionarioController funcionarioController = new FuncionarioController(funcionarioView, funcionarioModel, session);
+        FUNCIONARIO_CONTROLLER = funcionarioController;
+        funcionarioView.setVisible(true);
         
-        // Crea Solicitud y sus Bienes
-        ses.save(f);
-        t.commit();
+        
     }
     
-    public static final int MODO_AGREGAR = 0;
+    public static FuncionarioController FUNCIONARIO_CONTROLLER;
+    public static final int MODO_AGREGAR = 0; // que hace el final??
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
+    public static final Color COLOR_ERROR = Color.red;
+    public static final Color COLOR_OK = Color.black;
+    
 }
